@@ -20,18 +20,31 @@ X, features = get_data('../datasets/usuarios.csv')
 
 """ for i in X:
     print(
-        f"insert into i72lumav.usuarios({features}) values ('{i[0]}', '{i[1]}')") """
+        f"insert into i72lumav.usuarios({features}) values ('{i[0]}', '{i[1]}');") """
 
 # ÁLBUMES:
 X, features = get_data('../datasets/albumes.csv')
 
 """ for i in X:
     print(
-        f"insert into i72lumav.albumes({features}) values ({i[0]}, '{i[1]}', '{i[2]}', {i[3]}, {i[4]}, '{i[5]}', '{i[6]}')") """
+        f"insert into i72lumav.albumes({features}) values ({i[0]}, '{i[1]}', '{i[2]}', {i[3]}, {i[4]}, '{i[5]}', '{i[6]}');") """
 
 # CANCIONES:
 X, features = get_data('../datasets/canciones.csv')
 
-for i in X:
+""" for i in X:
+    print(f"insert into i72lumav.albumes({features}) values ({i[0]}, {i[1]}, {i[2]}, '{i[3]}', '{i[4]}', {i[5]});") """
+
+# ARTISTAS:
+X, features = get_data('../datasets/artistas.csv')
+
+""" for i in X:
     print(
-        f"insert into i72lumav.albumes({features}) values ({i[0]}, {i[1]}, {i[2]}, '{i[3]}', '{i[4]}', {i[5]})")
+        f"insert into i72lumav.albumes({features}) values ({i[0]}, '{i[1]}', {i[2]}, '{i[3]}');") """
+
+# ESTILOS:
+X, features = get_data('../datasets/estilos_musicales.csv')
+
+""" for i in X:
+    print(
+        f"insert into i72lumav.albumes({features}) values ('{i[0]}');") """
