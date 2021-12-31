@@ -1,12 +1,17 @@
+from os import walk
 import pandas as pd
-import numpy as np
 
 # NOTA: LOS ATRIBUTOS QUE SON NULL SE GENERARÁN ENTRECOMILLADOS. PARA ELLO, ELIMINAR LAS COMILLAS:
 #	CTL-H Y REEMPLAZAR 'nan' POR null.
 
 
 def get_data(dataset):
-    data = pd.read_csv(dataset, header=0, sep=';')
+    try:
+        data = pd.read_csv(dataset, header=0, sep=';')
+    except FileNotFoundError:
+        print("File not found.")
+        exit(0)
+
     df = pd.DataFrame(data)
 
     X = df.iloc[:, :].values
@@ -17,7 +22,7 @@ def get_data(dataset):
 
 
 def create_insertion(table):
-    X, features = get_data('../datasets/' + table + '.csv')
+    X, features = get_data('../datasets/' + table)
 
     for i in X:
         values = []
@@ -31,6 +36,9 @@ def create_insertion(table):
               f" ({features}) values ({values});")
 
 
-# TABLES:
+# Gets all the files in "datasets" directory.
+filenames = next(walk("../datasets/"), (None, None, []))[2]
 
-create_insertion('usuarios')
+for file in filenames:
+    # Create insertion for all datasets.
+    create_insertion(file)
