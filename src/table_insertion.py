@@ -27,8 +27,8 @@ def create_insertion(table):
         # Remove squared brackets.
         values = str(values)[1:-1]
 
-        print(f"insert into i72lumav." + table +
-              "({features}) values ({values});")
+        print("insert into i72lumav." + table +
+              f" ({features}) values ({values});")
 
 
 # TABLES:
