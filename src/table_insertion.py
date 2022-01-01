@@ -1,6 +1,9 @@
 from os import walk
 import pandas as pd
 
+# Execution:
+#	./python3 table_insetion.py > file.sql
+
 # NOTA: LOS ATRIBUTOS QUE SON NULL SE GENERARÁN ENTRECOMILLADOS. PARA ELLO, ELIMINAR LAS COMILLAS:
 #	CTL-H Y REEMPLAZAR 'nan' POR null.
 
