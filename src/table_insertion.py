@@ -1,6 +1,16 @@
 from os import walk
 import pandas as pd
 
+"""
+NOTE: Be sure that the values in dataset do not have ', because the string created
+will automatically generate a " string. For intance:
+	- If the name of the song is: <The Man's Too Strong>, then the value generated in the .sql will be <"The Man's Too Strong"> instead of <'The
+	Man's Too Strong'> (note the quotes).
+
+	- Be sure that the original value is: <The Man s Too Strong>.
+"""
+
+
 def get_data(dataset):
     """
     Get data from a '.csv' file.
@@ -20,7 +30,8 @@ def get_data(dataset):
     """
     try:
         # encoding='unicode_escape' in Linux.
-        data = pd.read_csv(dataset, header=0, sep=';', encoding='unicode_escape')
+        data = pd.read_csv(dataset, header=0, sep=';',
+                           encoding='unicode_escape')
     except FileNotFoundError:
         print("File not found.")
         exit(0)
