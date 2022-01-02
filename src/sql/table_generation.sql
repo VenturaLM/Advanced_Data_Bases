@@ -1,3 +1,4 @@
+drop table audit_table cascade constraints;
 drop table usuarios cascade constraints;
 drop table playlist cascade constraints;
 drop table nfts cascade constraints;
@@ -9,6 +10,11 @@ drop table canciones cascade constraints;
 drop table artistas_em cascade constraints;
 drop table artistas_albumes cascade constraints;
 drop table canciones_playlist cascade constraints;
+
+create table audit_table(
+	datos varchar2(1024 byte), 
+	tabla varchar2(1024 byte)
+);
 
 create table usuarios(
 	email varchar2(32) primary key,
