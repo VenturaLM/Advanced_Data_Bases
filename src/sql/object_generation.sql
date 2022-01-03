@@ -35,7 +35,6 @@ create table playlist(
 	constraint fk_email foreign key(email) references usuarios(email)
 );
 
--- Apartado 4.
 /
 create type reparto_t as object(
 	nombre varchar2(1024),
@@ -43,6 +42,14 @@ create type reparto_t as object(
 	member function getnombre return varchar2,
 	member procedure display_reparto (self in out nocopy reparto_t)
 );
+
+create type body reparto_t as
+  member function getnombre return varchar2 is
+    begin
+      return nombre;
+    end;
+end;
+
 /
 -- Creo el tipo.
 create type album_reparto_tab as table of reparto_t;

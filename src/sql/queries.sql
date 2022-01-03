@@ -54,3 +54,22 @@ insert into albumes values (17, 1989, '...But Seriously', '59 minutos', 12, '...
 
 -- Test para el disparador de restricción de integridad:
 insert into artistas_albumes values (8, 17);
+
+-- Test de objetos:
+set serveroutput on;
+
+declare
+  instrumento instrumentos_t;
+  cursor c is (select titulo, instrumentos from albumes where instrumentos is not null);
+
+begin
+  for i in c loop
+    dbms_output.put_line(i.titulo);
+    dbms_output.put_line('---------------');
+    instrumento := i.instrumentos;
+      for j in instrumento.first..instrumento.last loop
+        dbms_output.put_line(instrumento(j));
+      end loop;
+      dbms_output.put_line(' ');
+  end loop;
+end;
