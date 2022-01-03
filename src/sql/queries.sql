@@ -42,3 +42,15 @@ order by canciones.id_cancion;
 select nfts.direccion "Dirección NFT", usuarios.email "Usuario"
 from nfts, usuarios
 where nfts.email = usuarios.email;
+
+-- Test para el disparador de seguridad:
+insert into nfts values (1, '0E46ACA4DBC5A030E188F997E988BAC29F8A27A37BDFD92931F4C4376BB9CC52', 'admin@bbddaa.com', 8, 'CIP-25', 'cardano');
+
+-- Test para el disparador de dominio:
+-- Introducción de un LP como un Single:
+insert into albumes values (17, 1989, '...But Seriously', '59 minutos', 12, '...But Seriously es el nombre del cuarto album de estudio del cantante, compositor y baterista britanico Phil Collins. El album fue publicado el 7 de noviembre de 1989 a traves de la discografica Virgin Records y Atlantic Records.', 'Single');
+-- Introducción de un LP como un EP:
+insert into albumes values (17, 1989, '...But Seriously', '59 minutos', 12, '...But Seriously es el nombre del cuarto album de estudio del cantante, compositor y baterista britanico Phil Collins. El album fue publicado el 7 de noviembre de 1989 a traves de la discografica Virgin Records y Atlantic Records.', 'EP');
+
+-- Test para el disparador de restricción de integridad:
+insert into artistas_albumes values (8, 17);

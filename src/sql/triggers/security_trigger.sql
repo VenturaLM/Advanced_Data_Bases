@@ -15,7 +15,7 @@ begin
   	if flag = 0 then
     	insert into nfts values (:new.token_id, :new.direccion, :new.email, :new.id_album, :new.estandar, :new.blockchain);
   	else
-    	Raise_application_error(-20001, 'La dirección del NFT ya existe.');
+    	Raise_application_error(-20001, 'ERROR: La dirección del NFT ya existe.');
     	rollback;
   	end if;
 end;
