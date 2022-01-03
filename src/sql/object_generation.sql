@@ -11,6 +11,10 @@ drop table artistas_em cascade constraints;
 drop table artistas_albumes cascade constraints;
 drop table canciones_playlist cascade constraints;
 
+drop type album_reparto_tab;
+drop type instrumentos_t;
+drop type reparto_t;
+
 create table audit_table(
 	datos varchar2(1024 byte), 
 	tabla varchar2(1024 byte)
@@ -34,10 +38,8 @@ create table playlist(
 -- Apartado 4.
 /
 create type reparto_t as object(
-	id_reparto varchar2(32),
-	nombre varchar2(32),
+	nombre varchar2(1024),
 
-	member function getidreparto return varchar2,
 	member function getnombre return varchar2,
 	member procedure display_reparto (self in out nocopy reparto_t)
 );
@@ -45,7 +47,7 @@ create type reparto_t as object(
 -- Creo el tipo.
 create type album_reparto_tab as table of reparto_t;
 /
-create type instrumentos_t as varray(10) of varchar2(32);
+create type instrumentos_t as varray(10) of varchar2(64);
 /
 create table albumes(
 	id_album number(16) primary key,
