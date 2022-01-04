@@ -1,6 +1,6 @@
 package usuarios;
 
-public class usuarios {
+public class usuario {
 
 	private String email;
 	private String contrasena;
@@ -8,7 +8,7 @@ public class usuarios {
 	/**
 	 * Contructor por defecto.
 	 */
-	public usuarios() {
+	public usuario() {
 
 	}
 
@@ -18,23 +18,9 @@ public class usuarios {
 	 * @param email      Email de un usuario.
 	 * @param contrasena Contraseña de un usuario.
 	 */
-	public usuarios(String email, String contrasena) {
+	public usuario(String email, String contrasena) {
 		setEmail(email);
 		setContrasena(contrasena);
-	}
-
-	/**
-	 * Contructor de usuario que recibe los parámetros para la conexión a la base de
-	 * datos.
-	 * 
-	 * @param bd_url        Enlace de la base de datos.
-	 * @param bd_usuario    Usuario de la base de datos.
-	 * @param bd_contrasena Contraseña de la base de datos.
-	 */
-	public usuarios(String bd_url, String bd_usuario, String bd_contrasena) {
-		/**
-		 * Conexión a la base de datos.
-		 */
 	}
 
 	/**

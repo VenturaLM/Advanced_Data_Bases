@@ -195,7 +195,6 @@ insert into i72lumav.canciones (id_cancion, id_album, indice, titulo, duracion, 
 insert into i72lumav.usuarios (email, contrasena) values ('admin@bbddaa.com', 'admin');
 insert into i72lumav.usuarios (email, contrasena) values ('lixepasuha-1174@bbddaa.com', 'JVSSth$eLt$$');
 insert into i72lumav.usuarios (email, contrasena) values ('brixatroudeppa-2336@bbddaa.com', 'me2P$4vHglV$');
-insert into i72lumav.usuarios (email, contrasena) values ('brixatroudeppa-2336@bbddaa.com', '@TVl%7JIcJ1i');
 insert into i72lumav.usuarios (email, contrasena) values ('ceiffiwafreza-6533@bbddaa.com', 'oQeArNw@0Lfe');
 insert into i72lumav.usuarios (email, contrasena) values ('prauvegagriffei-4787@bbddaa.com', '3RoUusqEm2^u');
 insert into i72lumav.usuarios (email, contrasena) values ('goibriliquousoi-6568@bbddaa.com', '^VUYmznbs6fz');
