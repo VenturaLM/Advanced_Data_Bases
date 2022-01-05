@@ -79,7 +79,7 @@ public class usuario_DAO {
 			estado = stat.executeUpdate();
 			c.desconectar();
 
-			System.out.println("\nModificación realizada conéxito.");
+			System.out.println("\nModificación realizada con éxito.");
 
 		} catch (Exception e) {
 			System.err.println("\nError al modificar el usuario en la base de datos.\n");
