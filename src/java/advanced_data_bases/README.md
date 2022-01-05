@@ -1,18 +1,19 @@
-## Getting Started
+## App
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Aplicación sencilla en `Java` que permite intercambiar información con una base de datos `SQL`. Principalmente realiza las operaciones de inserción, modificación, visualización y borrado de registros.
 
-## Folder Structure
+## Estructura de los directorios
 
-The workspace contains two folders by default, where:
+Los directorios contenidos son los siguientes:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- `src`: carpeta que contiene el código fuente.
+	- `conexion`
+		- `conexion_base_datos.java`: permite crear la conexión y desconexión entre el programa Java y la base de datos mencionada. Para que funcione esta conexión, será necesario preinstalar [mysql-connector](https://dev.mysql.com/downloads/connector/j/) de Java.
+	- `usuarios`
+		- `usuario_Bean.java`: clase que representa un usuario de la base de datos.
+		- `usuario_DAO.java`: clase que permite realizar el intercambio de información entre el objecto usuario y el usuario de la base de datos.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+- `lib`: carpeta que contiene las dependencias.
+	- `mysql-connector.jar`
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+La salida compilada se genera automáticamente en el directorio `bin` de manera predeterminada.
