@@ -12,12 +12,6 @@ public class usuario_DAO {
 	private Connection conexion;
 
 	/**
-	 * SQL Queries:
-	 */
-	private String INSERT = "insert into usuarios (email, contrasena) values (?, ?);";
-	private String SELECT = "select * from usuarios where usuarios.email = ?;";
-
-	/**
 	 * Contructor de usuario que recibe los parámetros para la conexión a la base de
 	 * datos.
 	 * 
@@ -29,7 +23,15 @@ public class usuario_DAO {
 		c = new conexion_base_datos(bd_url, bd_usuario, bd_contrasena);
 	}
 
-	public void insertarUsuario(usuario u) {
+	/**
+	 * Ejecuta una inserción de un usuario en la base de datos.
+	 * 
+	 * @param u Usuario a insertar en la base de datos.
+	 */
+	public void insertarUsuario(usuario_Bean u) {
+		// Comando SQL:
+		String INSERT = "insert into usuarios (email, contrasena) values (?, ?);";
+
 		int estado = 0;
 
 		PreparedStatement stat = null;
@@ -51,7 +53,80 @@ public class usuario_DAO {
 		}
 	}
 
+	/**
+	 * Ejecuta una modificación de un usuario en la base de datos.
+	 * 
+	 * @param email      Email del usuario a modificar.
+	 * @param contrasena Contraseña a modificar (único campo modificable).
+	 */
+	public void modificarUsuario(String email, String contrasena) {
+		// Comando SQL:
+		String UPDATE = "update usuarios set email = ?, contrasena = ? where email = ?;";
+
+		int estado = 0;
+
+		PreparedStatement stat = null;
+		conexion = c.getConexion();
+
+		try {
+			stat = conexion.prepareStatement(UPDATE);
+
+			// Establecer los datos.
+			stat.setString(1, email);
+			stat.setString(2, contrasena);
+			stat.setString(3, email);
+
+			estado = stat.executeUpdate();
+			c.desconectar();
+
+			System.out.println("\nModificación realizada conéxito.");
+
+		} catch (Exception e) {
+			System.err.println("\nError al modificar el usuario en la base de datos.\n");
+			estado = -1;
+		}
+	}
+
+	/**
+	 * Ejecuta una eliminación de un usuario de la base de datos.
+	 * 
+	 * @param email Email del usuario a elinar.
+	 */
+	public void eliminarUsuario(String email) {
+		// Comando SQL:
+		String UPDATE = "delete from usuarios where email = ?;";
+
+		int estado = 0;
+
+		PreparedStatement stat = null;
+		conexion = c.getConexion();
+
+		try {
+			stat = conexion.prepareStatement(UPDATE);
+
+			// Establecer los datos.
+			stat.setString(1, email);
+
+			estado = stat.executeUpdate();
+			c.desconectar();
+
+			System.out.println("\nEliminación realizada con éxito.");
+
+		} catch (Exception e) {
+			System.err.println("\nError al eliminar el usuario en la base de datos.\n");
+			estado = -1;
+		}
+	}
+
+	/**
+	 * Ejecuta una vista de un usuario (si existe) de la base de datos.
+	 * 
+	 * @param email Email del usuario a mostrar.
+	 */
 	public void verUsuario(String email) {
+		// Comando SQL:
+		String SELECT = "select * from usuarios where usuarios.email = ?;";
+
 		int estado = 0;
 
 		PreparedStatement stat = null;
@@ -66,19 +141,58 @@ public class usuario_DAO {
 			ResultSet res = stat.executeQuery();
 
 			if (res.next()) {
-				System.out.print("El usuario existe.");
+				// El usuario existe.
+				System.out.format("\nEmail: %s", email);
+				System.out.format("\nContraseña: %s\n", res.getString("contrasena"));
+
 				estado = 0;
 			} else {
-				System.err.print("El usuario no existe.");
+				System.err.print("\nEl usuario no existe.");
 				estado = -1;
 			}
 
 			c.desconectar();
 
 		} catch (Exception e) {
-			System.err.print("Error al insertar el usuario en la base de datos.\n");
+			System.err.println("\nError al ver el usuario en la base de datos.\n");
 			estado = -1;
 		}
+	}
+
+	/**
+	 * Comprueba si existe un usuario en la base de datos.
+	 * 
+	 * @param email Email del usuario a buscar en la base de datos.
+	 * @return True si el usuario existe; False si el usuario no existe.
+	 */
+	public boolean existeUsuario(String email) {
+		// Comando SQL:
+		String SELECT = "select email from usuarios where email = ?;";
+
+		boolean estado = false;
+
+		PreparedStatement stat = null;
+		c.conectar();
+		conexion = c.getConexion();
+
+		try {
+			stat = conexion.prepareStatement(SELECT);
+
+			stat.setString(1, email);
+
+			ResultSet res = stat.executeQuery();
+
+			if (res.next()) {
+				estado = true;
+			} else {
+				estado = false;
+			}
+
+		} catch (Exception e) {
+			System.err.print(e);
+		}
+
+		return estado;
 	}
 
 }

@@ -48,10 +48,10 @@ public class conexion_base_datos {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conexion = DriverManager.getConnection(bd_url, bd_usuario, bd_contrasena);
-			System.out.println("Conexión establecida con éxito.");
+			System.out.println("\nConexión establecida con éxito.");
 
 		} catch (Exception e) {
-			System.err.println("Error en la conexión con la base de datos.");
+			System.err.println("\nError en la conexión con la base de datos.");
 		}
 	}
 
@@ -61,10 +61,10 @@ public class conexion_base_datos {
 	public void desconectar() {
 		try {
 			conexion.close();
-			System.out.println("Desconexión establecida con éxito.");
+			System.out.println("\nDesconexión establecida con éxito.");
 
 		} catch (Exception e) {
-			System.err.println("Error en la desconexión con la base de datos.");
+			System.err.println("\nError en la desconexión con la base de datos.");
 		}
 	}
 

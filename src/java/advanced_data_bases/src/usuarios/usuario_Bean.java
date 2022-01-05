@@ -1,27 +1,13 @@
 package usuarios;
 
-public class usuario {
+import java.io.Serializable;
+
+public class usuario_Bean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private String email;
 	private String contrasena;
-
-	/**
-	 * Contructor por defecto.
-	 */
-	public usuario() {
-
-	}
-
-	/**
-	 * Constructor de usuario que recibe como parámetros el email y la contraseña.
-	 * 
-	 * @param email      Email de un usuario.
-	 * @param contrasena Contraseña de un usuario.
-	 */
-	public usuario(String email, String contrasena) {
-		setEmail(email);
-		setContrasena(contrasena);
-	}
 
 	/**
 	 * 
