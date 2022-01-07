@@ -12,10 +12,15 @@ public class App {
 		Scanner cin = new Scanner(System.in);
 		int opcion = Integer.parseInt(cin.nextLine());
 
+		// Credenciales de la base de datos:
+		String bd_url = "jdbc:mysql://oraclepr.uco.es:3306/i72lumav";
+		String bd_usuario = "i72lumav";
+		String bd_contrasena = "";
+
 		switch (opcion) {
 			case 1:
 				// Usuarios:
-				usuario_DAO u = new usuario_DAO("jdbc:mysql://oraclepr.uco.es:3306/i72lumav", "i72lumav", "PW2021");
+				usuario_DAO u = new usuario_DAO(bd_url, bd_usuario, bd_contrasena);
 				usuario_Bean usuario_Bean = new usuario_Bean();
 
 				System.out.println(
